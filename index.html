@@ -63,7 +63,13 @@
       box-shadow:0 10px 30px rgba(0,0,0,.2);
       text-align:center;
     }
-    .logo{ width:400px; margin:0 auto 12px; display:block }
+    .logo {
+      max-width: 400px;   /* auf großen Screens höchstens 400px */
+      width: 100%;        /* passt sich an den Bildschirm an */
+      height: auto;       /* behält Seitenverhältnis */
+      margin: 0 auto 12px;
+      display: block;
+      }
 
     /* Slogan direkt unter dem Logo */
     .slogan{
