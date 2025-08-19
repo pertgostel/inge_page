@@ -199,7 +199,8 @@
   <!-- =================== HERO =================== -->
   <main>
     <section class="card" role="region" aria-label="Website Status">
-      <img src="logo.jpeg" alt="INGE Logo" class="logo" />
+      <!-- Logo (Pfad korrigiert) -->
+      <img src="./logo.png" alt="INGE Logo" class="logo" />
       <p class="slogan">Wir verwandeln Energie in Wert</p>
       <p class="lead">Unsere neue Website befindet sich im Aufbau.</p>
 
@@ -312,23 +313,23 @@
               + Math.sin((x*wv.freq*0.45) - t*wv.speed*28) * (wv.amp*0.35);
             x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
           }
-          ctx.strokeStyle=wv.color; ctx.lineWidth=wv.width; ctx.stroke();
+          ctx.strokeStyle=wv.color;
+          ctx.lineWidth=wv.width;
+          ctx.stroke();
         });
+        t+=0.014; requestAnimationFrame(draw);
       }
-      function loop(){ t+=0.02; draw(); requestAnimationFrame(loop); }
-      window.addEventListener('resize',resize,{passive:true});
-      resize(); loop();
+      window.addEventListener('resize',resize);
+      resize(); draw();
     })();
 
-    /* --- Scroll-Reveal für Journey-Karten --- */
+    /* --- ScrollReveal (Journey Cards) --- */
     (() => {
-      const items=document.querySelectorAll('.reveal');
-      const io=new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
-        });
-      }, { threshold:0.15 });
-      items.forEach(el=>io.observe(el));
+      const els=document.querySelectorAll('.reveal');
+      const obs=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in-view')})
+      },{threshold:.12});
+      els.forEach(el=>obs.observe(el));
     })();
   </script>
 </body>
